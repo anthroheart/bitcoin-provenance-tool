@@ -2,7 +2,7 @@
 
 A simple, stateful Python tool that anchors files to the Bitcoin Blockchain.
 
-<img width="1920" height="1080" alt="screenshot" src="https://github.com/user-attachments/assets/f6d0e1fd-af31-4113-bfec-2113c4e9bd00" />
+<img width="1920" height="1080" alt="screenshot" src="https://github.com/user-attachments/assets/1319327d-be85-4171-905b-e480da76d682" />
 
 ## 🧐 What is this?
 
