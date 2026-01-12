@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """
 ===============================================================================
- BITCOIN PROVENANCE TOOL (Stateful Artifact Generator)
+ BITCOIN PROVENANCE TOOL (With Master Ledger)
 ===============================================================================
 Usage:
   python3 Bitcoin_Provenance_Tool.py              (Menu & Status Browser)
   python3 Bitcoin_Provenance_Tool.py <filename>   (Direct Action)
 
-Features:
-  - Tab Autocomplete for filenames.
-  - Stateful JSON: Updates status (Pending -> Confirmed).
-  - Artifact Recording: Stores filenames of keys, proofs, and targets.
-  - Blockchain Data: Saves Block Height & Time to JSON after verification.
+Updates:
+  - Generates individual artifacts (file.provenance.json)
+  - Maintains a MASTER LEDGER (master_ledger.json) organizing all records.
+  - Full tab-completion and state tracking.
 ===============================================================================
 """
 
@@ -30,7 +29,8 @@ from datetime import datetime, timezone
 # 0. CONFIGURATION
 # ---------------------------------------------------------------------------
 PROOF_DIR = "bitcoin_proofs"
-IDENTITY_FILENAME = "identity.key"  # Default identity
+IDENTITY_FILENAME = "identity.key"
+LEDGER_FILENAME = "master_ledger.json"
 
 # Colors
 C_RESET  = "\033[0m"
@@ -84,13 +84,51 @@ from nacl.encoding import HexEncoder
 # 3. HELPER FUNCTIONS
 # ---------------------------------------------------------------------------
 def get_provenance_filename(target_file):
-    """Generates the standardized JSON filename."""
     base = os.path.basename(target_file)
     return os.path.join(PROOF_DIR, f"{base}.provenance.json")
 
+def update_master_ledger(record_entry):
+    """Updates the central master_ledger.json file."""
+    ledger_path = os.path.join(PROOF_DIR, LEDGER_FILENAME)
+    ledger_data = {"records": {}}
+
+    # Load existing
+    if os.path.exists(ledger_path):
+        try:
+            with open(ledger_path, 'r') as f:
+                ledger_data = json.load(f)
+        except json.JSONDecodeError:
+            pass
+
+    # Update record (keyed by filename for uniqueness)
+    fname = record_entry['target_file']['filename']
+    ledger_data['records'][fname] = {
+        "status": record_entry['provenance_status'],
+        "last_updated": record_entry['last_updated'],
+        "block_height": record_entry['blockchain_data']['block_height'],
+        "note": record_entry.get('user_note', ''),
+        "sha256": record_entry['target_file']['sha256']
+    }
+
+    # Save
+    with open(ledger_path, 'w') as f:
+        json.dump(ledger_data, f, indent=2)
+
+    print(f"   📘 Ledger updated: {ledger_path}")
+
 def show_file_listing():
-    print(f"\n{C_CYAN}📁 AVAILABLE FILES IN CURRENT FOLDER:{C_RESET}")
+    print(f"\n{C_CYAN}📁 AVAILABLE FILES:{C_RESET}")
     print("-" * 70)
+
+    # Check Ledger first for quick status
+    ledger_path = os.path.join(PROOF_DIR, LEDGER_FILENAME)
+    ledger_records = {}
+    if os.path.exists(ledger_path):
+        try:
+            with open(ledger_path, 'r') as f:
+                ledger_records = json.load(f).get("records", {})
+        except: pass
+
     try:
         files = [f for f in os.listdir('.') if os.path.isfile(f) and not f.startswith('.')]
         files.sort()
@@ -101,38 +139,31 @@ def show_file_listing():
         print("   (No files found)")
 
     for f in files:
-        json_path = get_provenance_filename(f)
-
-        # Determine Status by reading the JSON artifact
-        if os.path.exists(json_path):
-            try:
-                with open(json_path, 'r') as jf:
-                    data = json.load(jf)
-                    status = data.get("provenance_status", "unknown")
-
-                    if status == "confirmed":
-                        icon = "✅"
-                        display = f"{C_GREEN}{f} {C_GREY}[Confirmed in Block {data.get('blockchain_data', {}).get('block_height', '?')}]{C_RESET}"
-                    elif status == "pending":
-                        icon = "⏳"
-                        display = f"{C_YELLOW}{f} {C_GREY}[Mining Pending]{C_RESET}"
-                    else:
-                        icon = "🔒"
-                        display = f"{C_GREEN}{f} {C_GREY}[Anchored]{C_RESET}"
-            except:
-                icon = "❓"
-                display = f"{C_RED}{f} [Corrupt JSON]{C_RESET}"
+        # Check if in ledger
+        if f in ledger_records:
+            rec = ledger_records[f]
+            status = rec.get('status')
+            if status == "confirmed":
+                icon = "✅"
+                display = f"{C_GREEN}{f} {C_GREY}[Block {rec.get('block_height')}]{C_RESET}"
+            else:
+                icon = "⏳"
+                display = f"{C_YELLOW}{f} {C_GREY}[Pending]{C_RESET}"
         else:
-            icon = "📄"
-            display = f"{f}"
+            # Fallback to checking file existence if not in ledger
+            json_path = get_provenance_filename(f)
+            if os.path.exists(json_path):
+                 icon = "⏳"
+                 display = f"{C_YELLOW}{f} {C_GREY}[Anchored/Unindexed]{C_RESET}"
+            else:
+                icon = "📄"
+                display = f"{f}"
 
         print(f" {icon} {display}")
 
     print("-" * 70)
-    print(f" {C_GREEN}✅ Confirmed{C_RESET} | {C_YELLOW}⏳ Pending{C_RESET} | 📄 New File")
 
 def load_key():
-    """Loads the identity key, creating it if necessary."""
     if not os.path.exists(PROOF_DIR): os.makedirs(PROOF_DIR)
 
     key_path = os.path.join(PROOF_DIR, IDENTITY_FILENAME)
@@ -145,7 +176,7 @@ def load_key():
         sk = SigningKey.generate()
         with open(key_path, "w") as f:
             f.write(sk.encode(encoder=HexEncoder).decode())
-        print(f"   Saved to: {key_path} (Keep this safe!)")
+        print(f"   Saved to: {key_path}")
         return sk, IDENTITY_FILENAME
 
 def get_hash(filepath):
@@ -188,7 +219,7 @@ def run_new_anchor(target_file, json_path):
     # 3. Build State JSON
     manifest = {
         "version": "1.1",
-        "provenance_status": "pending",  # Initial state
+        "provenance_status": "pending",
         "last_updated": datetime.now(timezone.utc).isoformat(),
         "target_file": {
             "filename": base_name,
@@ -213,43 +244,35 @@ def run_new_anchor(target_file, json_path):
         "user_note": note
     }
 
-    # 4. Write JSON
+    # 4. Write Artifact JSON
     with open(json_path, "w") as f:
         json.dump(manifest, f, indent=2)
 
-    # 5. Stamp
+    # 5. Update Master Ledger
+    update_master_ledger(manifest)
+
+    # 6. Stamp
     print(f"⏳ Submitting fingerprint to Bitcoin aggregators...")
     try:
-        # We stamp the JSON itself to link the metadata,
-        # OR we stamp the file. Stamping the JSON is usually better for provenance metadata.
-        # But commonly we stamp the hash. Here we use the standard OTS file flow.
-        # We will create a detached timestamp for the FILE hash (h256) indirectly via ots tool on file?
-        # Actually, let's stamp the JSON manifest we just created. It contains the file hash.
-        # This anchors the *Metadata* + *File Hash* together.
-
+        # Stamp the JSON manifest (Metadata + Hash linkage)
         subprocess.check_call([OTS_EXEC, "stamp", json_path])
 
-        # OTS tool creates json_path.ots. Let's rename it to keep it clean if we want
-        # But 'ots stamp' forces .ots extension.
-        # Let's align with the manifest "proof_file" entry.
+        # OTS creates json_path.ots. Rename to clean name.
         generated_ots = json_path + ".ots"
         if os.path.exists(generated_ots):
             os.rename(generated_ots, ots_path)
 
         print(f"\n{C_GREEN}✅ ANCHOR SUBMITTED!{C_RESET}")
-        print(f"   Artifacts generated in '{PROOF_DIR}/':")
-        print(f"   1. {os.path.basename(json_path)} (Metadata)")
+        print(f"   Artifacts in '{PROOF_DIR}/':")
+        print(f"   1. {os.path.basename(json_path)} (Individual Record)")
         print(f"   2. {ots_filename} (Cryptographic Proof)")
+        print(f"   3. {LEDGER_FILENAME} (Master Organizer)")
         print("-" * 60)
         print(f" {C_YELLOW}⏳ NEXT STEP:{C_RESET} Wait 12-24 hours for Bitcoin mining.")
-        print(f" Run this tool again later to get your Block Height.")
         print("=" * 60)
 
     except Exception as e:
         print(f"{C_RED}❌ Error stamping: {e}{C_RESET}")
-        # Revert status
-        manifest["provenance_status"] = "failed"
-        with open(json_path, "w") as f: json.dump(manifest, f, indent=2)
 
 # ---------------------------------------------------------------------------
 # 5. WORKFLOW: UPDATE & VERIFY
@@ -267,18 +290,17 @@ def run_existing_verification(json_path):
     ots_path = os.path.join(PROOF_DIR, proof_filename)
 
     if not os.path.exists(ots_path):
-        print(f"{C_RED}❌ Error: Proof file '{proof_filename}' missing from {PROOF_DIR}.{C_RESET}")
+        print(f"{C_RED}❌ Error: Proof file '{proof_filename}' missing.{C_RESET}")
         return
 
-    # 2. Upgrade (Fetch Bitcoin Path)
-    print(" 📡 Checking for Bitcoin block updates...")
-    upgrade_proc = subprocess.run([OTS_EXEC, "upgrade", ots_path], capture_output=True, text=True)
+    # 2. Upgrade
+    print(" 📡 Checking for Bitcoin updates...")
+    subprocess.run([OTS_EXEC, "upgrade", ots_path], capture_output=True, text=True)
 
-    # 3. Verify (Read Block Data)
+    # 3. Verify
     verify_proc = subprocess.run([OTS_EXEC, "verify", ots_path], capture_output=True, text=True)
     output = verify_proc.stdout
 
-    # 4. Parse Results & Update State
     if "Bitcoin block" in output:
         match_block = re.search(r"Bitcoin block (\d+)", output)
         match_time = re.search(r"attests existence as of (.+)", output)
@@ -295,18 +317,16 @@ def run_existing_verification(json_path):
         with open(json_path, "w") as f:
             json.dump(manifest, f, indent=2)
 
+        # Update Master Ledger
+        update_master_ledger(manifest)
+
         print(f"\n {C_GREEN}✅ CONFIRMED!{C_RESET}")
-        print(f"    This file is immutably locked in the Bitcoin Blockchain.")
-        print("-" * 40)
-        print(f"    🧱 Block Height: {C_CYAN}{block}{C_RESET}")
-        print(f"    📅 Confirmed At: {C_CYAN}{time_s}{C_RESET}")
-        print("-" * 40)
-        print(f"    Artifact updated: {json_path}")
+        print(f"    File locked in Bitcoin Block: {C_CYAN}{block}{C_RESET}")
+        print(f"    Timestamp: {C_CYAN}{time_s}{C_RESET}")
 
     elif "Pending" in output or "incomplete" in output:
         print(f"\n {C_YELLOW}⏳ STATUS: PENDING MINING{C_RESET}")
         print("    Bitcoin hasn't mined the transaction yet.")
-        print("    Please check back in a few hours.")
     else:
         print(f"\n {C_RED}⚠️  STATUS UNKNOWN{C_RESET}")
         print(output)
@@ -331,7 +351,6 @@ def main():
         print(f"{C_RED}❌ Error: File '{target_file}' not found.{C_RESET}")
         sys.exit(1)
 
-    # Determine paths
     json_path = get_provenance_filename(target_file)
 
     if os.path.exists(json_path):
