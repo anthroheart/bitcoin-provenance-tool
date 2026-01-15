@@ -1,7 +1,7 @@
 {
   "version": "1.1",
   "provenance_status": "pending",
-  "last_updated": "2026-01-12T15:02:35.535180+00:00",
+  "last_updated": "2026-01-15T14:53:01.980225+00:00",
   "target_file": {
     "filename": "furryos-gen2.1-v2.iso",
     "size_bytes": 4802531328,
@@ -15,12 +15,12 @@
   },
   "identity": {
     "public_key": "2dc79a6d5fc3800b994b28ad31207902812654ef88dbbe638d7cdddf3412060d",
-    "signature": "fce39a339f32eb00d21f29353b6aca420ae672645315dc254951bd1c5942f11006975e7aade095308e9160654935b54ffef52e162eb0e0a2e278c70510bbd307",
+    "signature": "f956420e4e0f3a5919bbaf112259af16c1a33fa5ec59d4fdeedd30a0613ad93615f7e0b198fcba5c20f24da0aef677e33d3300981984e9da56679f8d5a42cf01",
     "signed_payload": "sha512|note"
   },
   "blockchain_data": {
     "block_height": null,
     "confirmed_at": null
   },
-  "user_note": "FurryOS Gen2.1_v2 ISO Genesis Provenance (Anthro Entertainment LLC)"
+  "user_note": "FurryOS Gen2.1_v2 (Build Jan 10, 2026) - Genesis Record (Anthro Entertainment LLC)"
 }

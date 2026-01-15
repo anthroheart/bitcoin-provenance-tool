@@ -2,9 +2,9 @@
   "records": {
     "furryos-gen2.1-v2.iso": {
       "status": "pending",
-      "last_updated": "2026-01-12T15:02:35.535180+00:00",
+      "last_updated": "2026-01-15T14:53:01.980225+00:00",
       "block_height": null,
-      "note": "FurryOS Gen2.1_v2 ISO Genesis Provenance (Anthro Entertainment LLC)",
+      "note": "FurryOS Gen2.1_v2 (Build Jan 10, 2026) - Genesis Record (Anthro Entertainment LLC)",
       "sha256": "d7c152e97262dbfa122ba3a4ed640b4cd1c804fa05e440aff1abdf2f2bed6bb8"
     }
   }
