@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 ===============================================================================
- BITCOIN PROVENANCE TOOL v1.4 (Root-Level Execution Fix)
+ BITCOIN PROVENANCE TOOL v1.7 (Auto-Backup Before Upgrade)
+ by Anthro Entertainment LLC (Anthro Teacher) 1/17/2026
+ MIT Licensed
 ===============================================================================
 Usage:
   python3 Bitcoin_Provenance_Tool.py <filename>
@@ -17,6 +19,7 @@ import shutil
 import re
 import glob
 import readline
+import time
 from datetime import datetime, timezone
 
 # ---------------------------------------------------------------------------
@@ -81,12 +84,27 @@ def get_provenance_filename(target_file):
     base = os.path.basename(target_file)
     return os.path.join(PROOF_DIR, f"{base}.provenance.json")
 
+def backup_proof(source_ots_path):
+    """Create a timestamped backup of the proof before upgrade."""
+    if not os.path.exists(source_ots_path):
+        return None
+
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+    backup_path = f"{source_ots_path}.bak-{timestamp}"
+
+    # Only backup if we don't already have one for this exact name (avoid duplicates)
+    if not os.path.exists(backup_path):
+        shutil.copy2(source_ots_path, backup_path)
+        print(f"   📦 Backup created: {os.path.basename(backup_path)}")
+    else:
+        print(f"   📦 Backup already exists for this timestamp.")
+
+    return backup_path
+
 def update_master_ledger(record_entry):
-    """Updates the central master_ledger.json file."""
     ledger_path = os.path.join(PROOF_DIR, LEDGER_FILENAME)
     ledger_data = {"records": {}}
 
-    # Load existing
     if os.path.exists(ledger_path):
         try:
             with open(ledger_path, 'r') as f:
@@ -94,7 +112,6 @@ def update_master_ledger(record_entry):
         except json.JSONDecodeError:
             pass
 
-    # Update record (keyed by filename for uniqueness)
     fname = record_entry['target_file']['filename']
     ledger_data['records'][fname] = {
         "status": record_entry['provenance_status'],
@@ -104,7 +121,6 @@ def update_master_ledger(record_entry):
         "sha256": record_entry['target_file']['sha256']
     }
 
-    # Save
     with open(ledger_path, 'w') as f:
         json.dump(ledger_data, f, indent=2)
 
@@ -114,7 +130,6 @@ def show_file_listing():
     print(f"\n{C_CYAN}📁 AVAILABLE FILES:{C_RESET}")
     print("-" * 70)
 
-    # Check Ledger first for quick status
     ledger_path = os.path.join(PROOF_DIR, LEDGER_FILENAME)
     ledger_records = {}
     if os.path.exists(ledger_path):
@@ -133,7 +148,6 @@ def show_file_listing():
         print("   (No files found)")
 
     for f in files:
-        # Check if in ledger
         if f in ledger_records:
             rec = ledger_records[f]
             status = rec.get('status')
@@ -144,7 +158,6 @@ def show_file_listing():
                 icon = "⏳"
                 display = f"{C_YELLOW}{f} {C_GREY}[Pending]{C_RESET}"
         else:
-            # Fallback to checking file existence if not in ledger
             json_path = get_provenance_filename(f)
             if os.path.exists(json_path):
                  icon = "⏳"
@@ -197,20 +210,16 @@ def run_new_anchor(target_file, json_path):
 
     note = input(f" Enter a Note for the Blockchain (e.g. 'v1.0') [Enter to skip]: ").strip()
 
-    # 1. Crypto Operations
     sk, key_filename = load_key()
     pk_hex = sk.verify_key.encode(encoder=HexEncoder).decode()
     h256, h512 = get_hash(target_file)
 
-    # Sign Hash + Note
     signature = sk.sign(f"{h512}|{note}".encode()).signature.hex()
 
-    # 2. Define Artifact Filenames
     base_name = os.path.basename(target_file)
-    ots_filename = f"{base_name}.ots"
+    ots_filename = f"{base_name}.provenance.json.ots"
     ots_path = os.path.join(PROOF_DIR, ots_filename)
 
-    # 3. Build State JSON
     manifest = {
         "version": "1.1",
         "provenance_status": "pending",
@@ -238,155 +247,137 @@ def run_new_anchor(target_file, json_path):
         "user_note": note
     }
 
-    # 4. Write Artifact JSON
     with open(json_path, "w") as f:
         json.dump(manifest, f, indent=2)
 
-    # 5. Update Master Ledger
     update_master_ledger(manifest)
 
-    # 6. Stamp
     print(f"⏳ Submitting fingerprint to Bitcoin aggregators...")
     try:
-        # Stamp the JSON manifest (Metadata + Hash linkage)
         subprocess.check_call([OTS_EXEC, "stamp", json_path])
-
-        # OTS creates json_path.ots. Rename to clean name.
         generated_ots = json_path + ".ots"
         if os.path.exists(generated_ots):
-            os.rename(generated_ots, ots_path)
+            shutil.move(generated_ots, ots_path)
 
         print(f"\n{C_GREEN}✅ ANCHOR SUBMITTED!{C_RESET}")
         print(f"   Artifacts in '{PROOF_DIR}/':")
-        print(f"   1. {os.path.basename(json_path)} (Individual Record)")
-        print(f"   2. {ots_filename} (Cryptographic Proof)")
-        print(f"   3. {LEDGER_FILENAME} (Master Organizer)")
+        print(f"   1. {os.path.basename(json_path)} (Record)")
+        print(f"   2. {ots_filename} (Proof)")
+        print(f"   3. {LEDGER_FILENAME} (Ledger)")
         print("-" * 60)
-        print(f" {C_YELLOW}⏳ NEXT STEP:{C_RESET} Wait 12-24 hours for Bitcoin mining.")
+        print(f" {C_YELLOW}⏳ NEXT STEP:{C_RESET} Re-run the tool—it will auto-upgrade & backup each time.")
+        print("    Bitcoin confirmations can take hours to days—totally normal for free calendars!")
         print("=" * 60)
 
     except Exception as e:
         print(f"{C_RED}❌ Error stamping: {e}{C_RESET}")
 
 # ---------------------------------------------------------------------------
-# 5. WORKFLOW: UPDATE & VERIFY (ROOT LEVEL STRATEGY)
+# 5. WORKFLOW: AUTO-UPGRADE + BACKUP + VERIFY
 # ---------------------------------------------------------------------------
 def run_existing_verification(target_file, json_path):
     print("\n" + "="*60)
     print(f"{C_BOLD} 🔍 EXISTING PROVENANCE FOUND{C_RESET}")
     print("="*60)
 
-    # 1. Load State
     with open(json_path, 'r') as f:
         manifest = json.load(f)
 
     proof_filename = manifest['artifacts']['proof_file']
-
-    # Define Paths
-    # Source: Inside the proofs folder
     source_ots_path = os.path.join(PROOF_DIR, proof_filename)
-
-    # Working Copy: In the ROOT folder, named [filename].ots
-    # This ensures 'ots' finds the ISO sitting right next to it.
-    root_working_proof = f"{target_file}.ots"
 
     if not os.path.exists(source_ots_path):
         print(f"{C_RED}❌ Error: Proof file '{source_ots_path}' missing.{C_RESET}")
         return
 
-    # Clean up any leftover root file from previous runs
-    if os.path.exists(root_working_proof):
-        os.remove(root_working_proof)
+    # BACKUP BEFORE UPGRADE
+    print(f"{C_CYAN}🔄 Preparing upgrade (with backup)...{C_RESET}")
+    backup_proof(source_ots_path)
 
-    # COPY the proof to the root directory
-    shutil.copy2(source_ots_path, root_working_proof)
-
-    try:
-        # 2. Upgrade (Run on the ROOT copy)
-        print(" 📡 Checking for Bitcoin updates...")
-        subprocess.run([OTS_EXEC, "upgrade", root_working_proof], capture_output=True, text=True)
-
-        # 3. Verify (Run on the ROOT copy)
-        # We verify 'root_working_proof'. OTS will automatically look for 'target_file' in the same dir.
-        verify_proc = subprocess.run([OTS_EXEC, "verify", root_working_proof], capture_output=True, text=True)
-
-        # Capture ALL output
-        output = verify_proc.stdout + verify_proc.stderr
-
-        # 4. Analyze Output
-        if "Bitcoin block" in output:
-            match_block = re.search(r"Bitcoin block\s+(\d+)", output)
-            match_time = re.search(r"attests existence as of (.+)", output)
-
-            block = match_block.group(1) if match_block else "Unknown"
-
-            # Clean up timestamp
-            time_s = "Unknown"
-            if match_time:
-                time_s = match_time.group(1).split('\n')[0].strip()
-
-            # Update JSON State
-            manifest["provenance_status"] = "confirmed"
-            manifest["last_updated"] = datetime.now(timezone.utc).isoformat()
-            manifest["blockchain_data"]["block_height"] = block
-            manifest["blockchain_data"]["confirmed_at"] = time_s
-
-            with open(json_path, "w") as f:
-                json.dump(manifest, f, indent=2)
-
-            # Update Master Ledger
-            update_master_ledger(manifest)
-
-            # --- BACKUP STRATEGY: PRESERVE GENESIS ---
-            # Save a backup of the original proof into the PROOF_DIR
-            genesis_backup = source_ots_path + ".genesis.bak"
-            if not os.path.exists(genesis_backup):
-                # We copy the ORIGINAL source (which we haven't touched) to backup
-                shutil.copy2(source_ots_path, genesis_backup)
-                print(f"    📦 Genesis record saved to: {C_YELLOW}{os.path.basename(genesis_backup)}{C_RESET}")
-
-            # SUCCESS: Move the upgraded root copy BACK to the proof folder, overwriting the original
-            shutil.move(root_working_proof, source_ots_path)
-
-            # Cleanup OTS backup artifacts in root
-            if os.path.exists(root_working_proof + ".bak"):
-                os.remove(root_working_proof + ".bak")
-
-            print(f"\n {C_GREEN}✅ CONFIRMED!{C_RESET}")
-            print(f"    File locked in Bitcoin Block: {C_CYAN}{block}{C_RESET}")
-            print(f"    Timestamp: {C_CYAN}{time_s}{C_RESET}")
-
-        elif "Pending" in output or "incomplete" in output:
-            print(f"\n {C_YELLOW}⏳ STATUS: PENDING MINING{C_RESET}")
-            print("    Bitcoin hasn't mined the transaction yet.")
-            # Discard root working copy
-            if os.path.exists(root_working_proof):
-                os.remove(root_working_proof)
-            if os.path.exists(root_working_proof + ".bak"):
-                os.remove(root_working_proof + ".bak")
-
+    # AUTO-UPGRADE with retry
+    upgraded = False
+    for attempt in range(1, 3):
+        upgrade_proc = subprocess.run([OTS_EXEC, "upgrade", source_ots_path], capture_output=True, text=True)
+        if upgrade_proc.returncode == 0:
+            upgraded = True
+            print(f"   Upgrade successful (attempt {attempt}).")
+            break
         else:
-            print(f"\n {C_RED}⚠️  STATUS UNKNOWN{C_RESET}")
-            print(f"{C_GREY}--- RAW OUTPUT ---{C_RESET}")
-            print(output)
-            print(f"{C_GREY}------------------{C_RESET}")
-            # Discard root working copy
-            if os.path.exists(root_working_proof):
-                os.remove(root_working_proof)
-            if os.path.exists(root_working_proof + ".bak"):
-                os.remove(root_working_proof + ".bak")
+            print(f"   Upgrade attempt {attempt} issue: {upgrade_proc.stderr.strip()[:100]}...")
+            if attempt < 2:
+                time.sleep(3)
 
-    except Exception as e:
-        print(f"\n{C_RED}❌ EXECUTION ERROR: {e}{C_RESET}")
-        if os.path.exists(root_working_proof):
-            os.remove(root_working_proof)
+    if not upgraded:
+        print(f"{C_YELLOW}⚠️ Upgrade didn't complete cleanly—checking current status anyway...{C_RESET}")
+
+    # Get info
+    print(" 📡 Retrieving current status...")
+    info_proc = subprocess.run([OTS_EXEC, "info", source_ots_path], capture_output=True, text=True)
+    output = info_proc.stdout + info_proc.stderr
+
+    # Integrity checks
+    current_h256, _ = get_hash(target_file)
+    if current_h256 != manifest['target_file']['sha256']:
+        print(f"{C_RED}⚠️ WARNING: Target file changed! Hash mismatch.{C_RESET}")
+        print(f"    Original: {manifest['target_file']['sha256'][:16]}...")
+        print(f"    Current:  {current_h256[:16]}...")
+    else:
+        print(f"{C_GREEN}✅ Target file hash matches.{C_RESET}")
+
+    committed_match = re.search(r"File sha256 hash: (\w+)", output)
+    if committed_match:
+        committed = committed_match.group(1)
+        json_h256, _ = get_hash(json_path)
+        if json_h256 != committed:
+            print(f"{C_RED}⚠️ WARNING: JSON manifest changed! Mismatch with proof.{C_RESET}")
+        else:
+            print(f"{C_GREEN}✅ JSON matches proof.{C_RESET}")
+
+    # Parse status
+    if "Pending confirmation" in output or "pending" in output.lower():
+        print(f"\n {C_YELLOW}⏳ STATUS: STILL PENDING{C_RESET}")
+        print("    Aggregation or Bitcoin mining in progress—super common even after days.")
+        print("    Free calendars batch hundreds/thousands of stamps together.")
+        print("    Re-run anytime—the tool auto-upgrades & backs up each time!")
+        print(f"    Manual check: ots info {source_ots_path}")
+
+    elif "Bitcoin block" in output:
+        match_block = re.search(r"Bitcoin block\s+(\d+)", output)
+        match_time = re.search(r"attests existence as of (.+)", output)
+
+        block = match_block.group(1) if match_block else "Unknown"
+        time_s = match_time.group(1).strip() if match_time else "Unknown"
+
+        manifest["provenance_status"] = "confirmed"
+        manifest["last_updated"] = datetime.now(timezone.utc).isoformat()
+        manifest["blockchain_data"]["block_height"] = block
+        manifest["blockchain_data"]["confirmed_at"] = time_s
+
+        with open(json_path, "w") as f:
+            json.dump(manifest, f, indent=2)
+
+        update_master_ledger(manifest)
+
+        print(f"\n {C_GREEN}✅ CONFIRMED IN BITCOIN BLOCK {block}!{C_RESET}")
+        print(f"    Timestamp: {time_s}")
+        print("    Your FurryOS provenance is now permanently anchored—huge win!")
+
+    else:
+        print(f"\n {C_RED}⚠️ STATUS UNKNOWN{C_RESET}")
+        print(f"{C_GREY}--- RAW OUTPUT ---{C_RESET}")
+        print(output.strip())
+        print(f"{C_GREY}------------------{C_RESET}")
+
+    # Clean ots temp backups if any
+    if os.path.exists(source_ots_path + ".bak"):
+        os.remove(source_ots_path + ".bak")
 
 # ---------------------------------------------------------------------------
 # 6. MAIN ENTRY
 # ---------------------------------------------------------------------------
 def main():
     if len(sys.argv) < 2:
-        print(f"{C_BOLD}BITCOIN PROVENANCE TOOL v1.4{C_RESET}")
+        print(f"{C_BOLD}BITCOIN PROVENANCE TOOL v1.7{C_RESET}")
         show_file_listing()
         try:
             user_input = input(f"\n{C_YELLOW}Enter filename > {C_RESET}").strip().strip("'")
