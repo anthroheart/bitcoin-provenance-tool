@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ===============================================================================
- BITCOIN PROVENANCE TOOL v1.7 (Auto-Backup Before Upgrade)
+ BITCOIN PROVENANCE TOOL v1.8 (Fix Block Height Upgrade)
  by Anthro Entertainment LLC (Anthro Teacher) 1/17/2026
  MIT Licensed
 ===============================================================================
@@ -333,19 +333,17 @@ def run_existing_verification(target_file, json_path):
         else:
             print(f"{C_GREEN}✅ JSON matches proof.{C_RESET}")
 
-    # Parse status
-    if "Pending confirmation" in output or "pending" in output.lower():
-        print(f"\n {C_YELLOW}⏳ STATUS: STILL PENDING{C_RESET}")
-        print("    Aggregation or Bitcoin mining in progress—super common even after days.")
-        print("    Free calendars batch hundreds/thousands of stamps together.")
-        print("    Re-run anytime—the tool auto-upgrades & backs up each time!")
-        print(f"    Manual check: ots info {source_ots_path}")
+    # Parse status (FIXED: confirmed beats pending)
+    heights = []
+    heights += [int(x) for x in re.findall(r"BitcoinBlockHeaderAttestation\((\d+)\)", output)]
+    heights += [int(x) for x in re.findall(r"Bitcoin block\s+(\d+)", output)]
+    heights = sorted(set(heights))
 
-    elif "Bitcoin block" in output:
-        match_block = re.search(r"Bitcoin block\s+(\d+)", output)
+    if heights:
+        block = str(heights[0])  # earliest confirmed block height
+
+        # Optional: sometimes included, sometimes not
         match_time = re.search(r"attests existence as of (.+)", output)
-
-        block = match_block.group(1) if match_block else "Unknown"
         time_s = match_time.group(1).strip() if match_time else "Unknown"
 
         manifest["provenance_status"] = "confirmed"
@@ -358,9 +356,18 @@ def run_existing_verification(target_file, json_path):
 
         update_master_ledger(manifest)
 
-        print(f"\n {C_GREEN}✅ CONFIRMED IN BITCOIN BLOCK {block}!{C_RESET}")
-        print(f"    Timestamp: {time_s}")
-        print("    Your FurryOS provenance is now permanently anchored—huge win!")
+        print(f"\n {C_GREEN}✅ CONFIRMED IN BITCOIN (Earliest Block {block})!{C_RESET}")
+        if len(heights) > 1:
+            print(f"    Also confirmed in blocks: {', '.join(str(h) for h in heights)}")
+
+        if time_s != "Unknown":
+            print(f"    Timestamp: {time_s}")
+
+    elif "Pending confirmation" in output or "pendingattestation" in output.lower() or "pending" in output.lower():
+        print(f"\n {C_YELLOW}⏳ STATUS: STILL PENDING{C_RESET}")
+        print("    Some calendars are still pending (normal).")
+        print("    Re-run anytime—the tool auto-upgrades & backs up each time!")
+        print(f"    Manual check: ots info {source_ots_path}")
 
     else:
         print(f"\n {C_RED}⚠️ STATUS UNKNOWN{C_RESET}")
@@ -377,7 +384,7 @@ def run_existing_verification(target_file, json_path):
 # ---------------------------------------------------------------------------
 def main():
     if len(sys.argv) < 2:
-        print(f"{C_BOLD}BITCOIN PROVENANCE TOOL v1.7{C_RESET}")
+        print(f"{C_BOLD}BITCOIN PROVENANCE TOOL v1.8{C_RESET}")
         show_file_listing()
         try:
             user_input = input(f"\n{C_YELLOW}Enter filename > {C_RESET}").strip().strip("'")

@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "provenance_status": "pending",
-  "last_updated": "2026-01-15T14:53:01.980225+00:00",
+  "provenance_status": "confirmed",
+  "last_updated": "2026-01-17T23:26:46.191121+00:00",
   "target_file": {
     "filename": "furryos-gen2.1-v2.iso",
     "size_bytes": 4802531328,
@@ -19,8 +19,8 @@
     "signed_payload": "sha512|note"
   },
   "blockchain_data": {
-    "block_height": null,
-    "confirmed_at": null
+    "block_height": "932396",
+    "confirmed_at": "Unknown"
   },
   "user_note": "FurryOS Gen2.1_v2 (Build Jan 10, 2026) - Genesis Record (Anthro Entertainment LLC)"
 }
