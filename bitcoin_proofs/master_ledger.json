@@ -1,5 +1,19 @@
 {
   "records": {
+    "FurryOS_Gen2.1_v2_Workspace.7z": {
+      "status": "confirmed",
+      "last_updated": "2026-01-20T15:33:11.970003+00:00",
+      "block_height": "932757",
+      "note": "FurryOS Gen2.1_v2 Workspace (Jan 17, 2026) Genesis Record [Anthro Entertainment LLC]",
+      "sha256": "af7ed9b8f4fc67e0e1a0fe0d047e0acdb1d932747027e8c1a4b553988ee5855e"
+    },
+    "FurryOS_WAV_Masters.7z": {
+      "status": "confirmed",
+      "last_updated": "2026-01-20T15:35:12.882845+00:00",
+      "block_height": "932757",
+      "note": "FurryOS WAV Masters (Jan 17, 2026) Genesis Record [Anthro Entertainment LLC]",
+      "sha256": "2131d7e6350b17f0dd8d807370bf86b5f325922b356467e670216f5e7b7ee182"
+    },
     "furryos-gen2.1-v2.iso": {
       "status": "confirmed",
       "last_updated": "2026-01-17T23:26:46.191121+00:00",

@@ -1,0 +1,26 @@
+{
+  "version": "1.1",
+  "provenance_status": "confirmed",
+  "last_updated": "2026-01-20T15:35:12.882845+00:00",
+  "target_file": {
+    "filename": "FurryOS_WAV_Masters.7z",
+    "size_bytes": 4030637062,
+    "sha256": "2131d7e6350b17f0dd8d807370bf86b5f325922b356467e670216f5e7b7ee182",
+    "sha512": "d778b9ac0b60cea16454666f5eca4538d003f17989120685ddea41ead04b1c58f6d53da78ecf221cb105178d701bf9a3ea704cdef8f10b8623b57f1ea21a3cf3"
+  },
+  "artifacts": {
+    "proof_file": "FurryOS_WAV_Masters.7z.provenance.json.ots",
+    "key_file": "identity.key",
+    "json_file": "FurryOS_WAV_Masters.7z.provenance.json"
+  },
+  "identity": {
+    "public_key": "ea7e1816a377eaa09950893587de5efa64c160478c8984ba90cd8e498d457698",
+    "signature": "b06c52e754616881eefd7770ffd42ee924d83b3b8ba756546308cf0391c244d1730bf04f2e5d71310514cd76c7fbaf1715601d17880f1ba0615d4b969a40a204",
+    "signed_payload": "sha512|note"
+  },
+  "blockchain_data": {
+    "block_height": "932757",
+    "confirmed_at": "Unknown"
+  },
+  "user_note": "FurryOS WAV Masters (Jan 17, 2026) Genesis Record [Anthro Entertainment LLC]"
+}
