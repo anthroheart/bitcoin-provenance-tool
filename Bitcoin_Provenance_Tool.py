@@ -360,10 +360,12 @@ def run_existing_verification(target_file, json_path):
         if len(heights) > 1:
             print(f"    Also confirmed in blocks: {', '.join(str(h) for h in heights)}")
 
+        # --- DONATION / OFFICIAL LINK ---
         print("-" * 60)
         print(f" {C_CYAN}💰 OFFICIAL DONATION LINK VERIFIED:{C_RESET}")
         print(f"    https://ko-fi.com/anthroteacher")
         print("-" * 60)
+        # --------------------------------
 
         if time_s != "Unknown":
             print(f"    Timestamp: {time_s}")
