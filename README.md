@@ -4,9 +4,6 @@ A simple, stateful Python tool that anchors files to the Bitcoin Blockchain.
 
 <img width="1920" height="1080" alt="screenshot" src="https://github.com/user-attachments/assets/e2350321-30ae-4730-a8ce-e0c61d877cd4" />
 
-
-### WARNING: Official FurryOS releases ALWAYS include a Bitcoin Provenance Tool. If the download page (furry-os.org) does not offer verification, you are on a phished or compromised site.
-
 ### Official Release FurryOS Gen2.1_v2 is anchored in Bitcoin Block 932396 (January 10, 2026).
 
 ## 🧐 What is this?
