@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-22T16:12:56.944160+00:00",
+  "target_file": {
+    "filename": "The Warlock Name Characters DLC.7z",
+    "size_bytes": 247726752,
+    "sha256": "b70f178f83879bdfe5be7b6ef151b0efc1132517afaaddf96e0b11a9e2a5f449",
+    "sha512": "c03eedde9a63157a3e7d382232c48ada3efbf5d8010e8bcc4bb4611d44d69b8bc23b85b1cbb9cb784824315d02e12ace14b590b97630d700c74d2cfac1c4f55d"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "8c89df4c453c6b18991161f1b3ed21030e961816cf6d41095f3b9bbf2432d17b7772c197cd8786de9397953adbe3066bfe98c1edaf9a5eb05b356cc94bf9590b",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "The Warlock Name Characters DLC.7z.ots",
+    "json_file": "The Warlock Name Characters DLC.7z.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "1/22/2026 Gold Master"
+}

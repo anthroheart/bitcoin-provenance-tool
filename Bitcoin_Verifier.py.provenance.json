@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-22T16:16:18.931065+00:00",
+  "target_file": {
+    "filename": "Bitcoin_Verifier.py",
+    "size_bytes": 8142,
+    "sha256": "d2ec2459a778c4face40c6b26c77c7f655461ad078211b526ef7296a56e8963a",
+    "sha512": "2f2df5a60f687d6278bb240711164a25c2e2f3dcab5df322fb6a88b18e2314382b162dd0f6feb66c177ddd3e10814c411aa9605a29fc9e13cf3992261849a9b5"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "d1c61591bd051f577ebf6eec580858f9868491a222a59e14e5ae2f843ae6272affa0dd7b44862583666649331214d5216f3cd498b3fc381cf06c7e1569f4900a",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "Bitcoin_Verifier.py.ots",
+    "json_file": "Bitcoin_Verifier.py.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "1/22/2026 Gold Master"
+}

@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-22T16:15:54.954784+00:00",
+  "target_file": {
+    "filename": "Bitcoin_Anchor.py",
+    "size_bytes": 17231,
+    "sha256": "82760c0ab2d11e742eee30f06567e6ea0245bf18adfd628a8526feb9b88f806a",
+    "sha512": "0f82279f4a7343bafbc9a3c83719f106817df1b823e120a4c1f4030164f00558db8d0589ddbfa73085466ee3be9d920d3535e3bced0bca13dd1fd293a3ae86e6"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "f750c311edb5afaf38aa6532f8999ce746de54bca4b9c7d4bbc353e7d9f83d0be26f6dd8e4bd2ce7cd30281b706300ac280329f64bdbefbfc23c0b1ec682fe0c",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "Bitcoin_Anchor.py.ots",
+    "json_file": "Bitcoin_Anchor.py.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "1/22/2026 Gold Master"
+}

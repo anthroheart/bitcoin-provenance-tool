@@ -1,0 +1,90 @@
+{
+  "records": [
+    {
+      "filename": "AnthroHeart.7z",
+      "sha256": "3cd2e28518493a397ac9cc3274f6e65e0820d518a3729ebd4aa32b86ad554d5d",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:07:26.914705+00:00",
+      "proof_file": "AnthroHeart.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "ANTHROHEART2.7z",
+      "sha256": "544e8525dfe3b0dbec19ca4adf817532416eb0dd66d838a6b5118246967c8f26",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:08:36.527215+00:00",
+      "proof_file": "ANTHROHEART2.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "FURRIESROCK.COM.WEB.INFRASRUCTURE.7z",
+      "sha256": "d8a7bfae807ba5320dc0086157ef02d7a0611e71ce605d3a206013e949f0b455",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:09:30.899884+00:00",
+      "proof_file": "FURRIESROCK.COM.WEB.INFRASRUCTURE.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "furryos-gen2.1-v2.iso",
+      "sha256": "d7c152e97262dbfa122ba3a4ed640b4cd1c804fa05e440aff1abdf2f2bed6bb8",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:10:20.974263+00:00",
+      "proof_file": "furryos-gen2.1-v2.iso.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "FurryOS_Gen2.1_v2_Workspace.7z",
+      "sha256": "af7ed9b8f4fc67e0e1a0fe0d047e0acdb1d932747027e8c1a4b553988ee5855e",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:11:00.295744+00:00",
+      "proof_file": "FurryOS_Gen2.1_v2_Workspace.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "FurryOS_WAV_Masters.7z",
+      "sha256": "2131d7e6350b17f0dd8d807370bf86b5f325922b356467e670216f5e7b7ee182",
+      "note": "1/22/2026",
+      "timestamp": "2026-01-22T16:11:56.203368+00:00",
+      "proof_file": "FurryOS_WAV_Masters.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "The Warlock Name Characters DLC.7z",
+      "sha256": "b70f178f83879bdfe5be7b6ef151b0efc1132517afaaddf96e0b11a9e2a5f449",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:12:58.768060+00:00",
+      "proof_file": "The Warlock Name Characters DLC.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "The_AnthroHeart_Collection_Bundle.7z",
+      "sha256": "a63738e240ca2ff5d4e29a3b342895aae15e9a8f68521e04ce5ed39ab31f5b31",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:14:14.037360+00:00",
+      "proof_file": "The_AnthroHeart_Collection_Bundle.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "The_AnthroHeart_Collection_New_Crashproof_Framework.7z",
+      "sha256": "deda23394c7e8a7ba4fac0870a02c4102d6f8ef551ddd5e072f2db856dad9f69",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:15:20.543664+00:00",
+      "proof_file": "The_AnthroHeart_Collection_New_Crashproof_Framework.7z.ots",
+      "bitcoin_block": "933392"
+    },
+    {
+      "filename": "Bitcoin_Anchor.py",
+      "sha256": "82760c0ab2d11e742eee30f06567e6ea0245bf18adfd628a8526feb9b88f806a",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:15:56.440410+00:00",
+      "proof_file": "Bitcoin_Anchor.py.ots"
+    },
+    {
+      "filename": "Bitcoin_Verifier.py",
+      "sha256": "d2ec2459a778c4face40c6b26c77c7f655461ad078211b526ef7296a56e8963a",
+      "note": "1/22/2026 Gold Master",
+      "timestamp": "2026-01-22T16:16:21.321237+00:00",
+      "proof_file": "Bitcoin_Verifier.py.ots"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-22T16:14:01.409513+00:00",
+  "target_file": {
+    "filename": "The_AnthroHeart_Collection_Bundle.7z",
+    "size_bytes": 5334249499,
+    "sha256": "a63738e240ca2ff5d4e29a3b342895aae15e9a8f68521e04ce5ed39ab31f5b31",
+    "sha512": "7599a6ead88e3654612d082159e13332aaee254790ea93477ea94c52a054c167dcd8d0812a6ae0d69c89d8a8170038819d580f10c56e93231a90974a9b085624"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "6c426b318ce266fe352e0cb4124c299845d04fba4e68bfa10fdf9777a6c545567893ca4c2e07b609c139cdd530f931aa476ec1b556b9ba80a5cc22fda71c8202",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "The_AnthroHeart_Collection_Bundle.7z.ots",
+    "json_file": "The_AnthroHeart_Collection_Bundle.7z.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "1/22/2026 Gold Master"
+}

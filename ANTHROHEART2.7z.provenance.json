@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-22T16:08:23.134200+00:00",
+  "target_file": {
+    "filename": "ANTHROHEART2.7z",
+    "size_bytes": 5911759323,
+    "sha256": "544e8525dfe3b0dbec19ca4adf817532416eb0dd66d838a6b5118246967c8f26",
+    "sha512": "ed3483a8fe599413bac2d3632029cd22bbc330e7c26d874ea25916f873267a70729e7434e362f14fff52143a3b205c8acbf9fdf1af7b880140ecfaf27841ad74"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "b39d467d7a0d60523b5000c02db6451c3bd419840b0424db8bff06421bb9965ad9ea8c975f6cfe86f761ae4642618ac1eff68bd99bccd9474b09e256b68e8d05",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "ANTHROHEART2.7z.ots",
+    "json_file": "ANTHROHEART2.7z.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "1/22/2026 Gold Master"
+}

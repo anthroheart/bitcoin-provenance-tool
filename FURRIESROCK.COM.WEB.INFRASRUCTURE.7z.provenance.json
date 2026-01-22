@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-22T16:09:20.350692+00:00",
+  "target_file": {
+    "filename": "FURRIESROCK.COM.WEB.INFRASRUCTURE.7z",
+    "size_bytes": 4580331963,
+    "sha256": "d8a7bfae807ba5320dc0086157ef02d7a0611e71ce605d3a206013e949f0b455",
+    "sha512": "7b23072628dd62cf951a619b78cbec6c6368fe1a4c6ec869b4cf9771f0b34c31ed13d4ceefc1c3b4232fa4baef4694f68d36cc3dbb388cd3d175bc22af156b53"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "df3a5818213f92c8a7c4c2136a82461885dec37bca7c3172fe536b678eb7cac50f0ecf3de2a4916f12aae20cd224b5baa49666bc087c4e6936ccab6c3b63c20a",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "FURRIESROCK.COM.WEB.INFRASRUCTURE.7z.ots",
+    "json_file": "FURRIESROCK.COM.WEB.INFRASRUCTURE.7z.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "1/22/2026 Gold Master"
+}

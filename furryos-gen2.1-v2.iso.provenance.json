@@ -1,26 +1,25 @@
 {
-  "version": "1.1",
-  "provenance_status": "confirmed",
-  "last_updated": "2026-01-17T23:26:46.191121+00:00",
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-22T16:10:09.807197+00:00",
   "target_file": {
     "filename": "furryos-gen2.1-v2.iso",
     "size_bytes": 4802531328,
     "sha256": "d7c152e97262dbfa122ba3a4ed640b4cd1c804fa05e440aff1abdf2f2bed6bb8",
     "sha512": "226aa37fe9499068cae255ed23bd973346dc50ae8173080140dcbd227e29d077e9fde4e41a913e89b6d88c14d05ed2e03928063ecdee3a04f784d05c68041dcb"
   },
-  "artifacts": {
-    "proof_file": "furryos-gen2.1-v2.iso.ots",
-    "key_file": "identity.key",
-    "json_file": "furryos-gen2.1-v2.iso.provenance.json"
-  },
   "identity": {
-    "public_key": "2dc79a6d5fc3800b994b28ad31207902812654ef88dbbe638d7cdddf3412060d",
-    "signature": "f956420e4e0f3a5919bbaf112259af16c1a33fa5ec59d4fdeedd30a0613ad93615f7e0b198fcba5c20f24da0aef677e33d3300981984e9da56679f8d5a42cf01",
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "c5417c7ca25d2891bfab3290104b8f987b3b6849363b906d0a045c0213ad890ea58914980be8cdb7176cbd2e9a7f3bc4850767ff9fecf8f7e871f1f56399ca04",
     "signed_payload": "sha512|note"
   },
-  "blockchain_data": {
-    "block_height": "932396",
-    "confirmed_at": "Unknown"
+  "artifacts": {
+    "proof_file": "furryos-gen2.1-v2.iso.ots",
+    "json_file": "furryos-gen2.1-v2.iso.provenance.json"
   },
-  "user_note": "FurryOS Gen2.1_v2 (Build Jan 10, 2026) - Genesis Record (Anthro Entertainment LLC)"
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "1/22/2026 Gold Master"
 }
