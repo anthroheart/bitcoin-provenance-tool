@@ -41,14 +41,6 @@
       "bitcoin_block": "933392"
     },
     {
-      "filename": "FurryOS_WAV_Masters.7z",
-      "sha256": "2131d7e6350b17f0dd8d807370bf86b5f325922b356467e670216f5e7b7ee182",
-      "note": "1/22/2026",
-      "timestamp": "2026-01-22T16:11:56.203368+00:00",
-      "proof_file": "FurryOS_WAV_Masters.7z.ots",
-      "bitcoin_block": "933392"
-    },
-    {
       "filename": "The Warlock Name Characters DLC.7z",
       "sha256": "b70f178f83879bdfe5be7b6ef151b0efc1132517afaaddf96e0b11a9e2a5f449",
       "note": "1/22/2026 Gold Master",
@@ -77,14 +69,40 @@
       "sha256": "82760c0ab2d11e742eee30f06567e6ea0245bf18adfd628a8526feb9b88f806a",
       "note": "1/22/2026 Gold Master",
       "timestamp": "2026-01-22T16:15:56.440410+00:00",
-      "proof_file": "Bitcoin_Anchor.py.ots"
+      "proof_file": "Bitcoin_Anchor.py.ots",
+      "bitcoin_block": "933392"
     },
     {
       "filename": "Bitcoin_Verifier.py",
       "sha256": "d2ec2459a778c4face40c6b26c77c7f655461ad078211b526ef7296a56e8963a",
       "note": "1/22/2026 Gold Master",
       "timestamp": "2026-01-22T16:16:21.321237+00:00",
-      "proof_file": "Bitcoin_Verifier.py.ots"
+      "proof_file": "Bitcoin_Verifier.py.ots",
+      "bitcoin_block": "933396"
+    },
+    {
+      "filename": "AnthroHeart-FurryOS-Torrent_Bundle.zip",
+      "sha256": "8c748941617703f3b931c37e64f03be6106fceae3f9548fbc0fff6bd0b82c7bc",
+      "note": "Gold Master 1/23/2026 [Anthro Entertainment LLC]",
+      "timestamp": "2026-01-23T07:18:57.900019+00:00",
+      "proof_file": "AnthroHeart-FurryOS-Torrent_Bundle.zip.ots",
+      "bitcoin_block": "933495"
+    },
+    {
+      "filename": "FurryOS_Bitcoin_Provenance_Bundle.zip",
+      "sha256": "7e27d342d030d050bbb3c256eadf774ae828ec9f228f222432bf5b77e98c4183",
+      "note": "Gold Master 1/23/2026 [Anthro Entertainment LLC]",
+      "timestamp": "2026-01-23T07:19:51.432555+00:00",
+      "proof_file": "FurryOS_Bitcoin_Provenance_Bundle.zip.ots",
+      "bitcoin_block": "933495"
+    },
+    {
+      "filename": "FurryOS_WAV_Masters.7z",
+      "sha256": "db5b2d125cb22eb8a31a17120f407b75826c8ae419cd3d0677add6af97aa8202",
+      "note": "Gold Master 1/23/2026 [Anthro Entertainment LLC]",
+      "timestamp": "2026-01-23T12:35:44.289324+00:00",
+      "proof_file": "FurryOS_WAV_Masters.7z.ots",
+      "bitcoin_block": "933525"
     }
   ]
 }

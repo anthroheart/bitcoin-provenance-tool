@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-23T07:18:56.457672+00:00",
+  "target_file": {
+    "filename": "AnthroHeart-FurryOS-Torrent_Bundle.zip",
+    "size_bytes": 1018504,
+    "sha256": "8c748941617703f3b931c37e64f03be6106fceae3f9548fbc0fff6bd0b82c7bc",
+    "sha512": "88f55751579c4da22c28c7cb1104ce0feff44ba70b79bddb13da77ff048b568171379ea68edf2a2bb8fcff7b6a4aae71b430b1f0d97b4f26b9a1e39802ff1471"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "efc33db4de680397503a961ea3902d94aa0352b8c8287ef766022b3b0ccde6ba5262257d008e2375ca9cfacd5dd9f5e2c949a1b21caa7c245982d0e19c3f4507",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "AnthroHeart-FurryOS-Torrent_Bundle.zip.ots",
+    "json_file": "AnthroHeart-FurryOS-Torrent_Bundle.zip.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "Gold Master 1/23/2026 [Anthro Entertainment LLC]"
+}

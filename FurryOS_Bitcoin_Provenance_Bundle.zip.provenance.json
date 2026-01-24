@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-01-23T07:19:50.066073+00:00",
+  "target_file": {
+    "filename": "FurryOS_Bitcoin_Provenance_Bundle.zip",
+    "size_bytes": 45353,
+    "sha256": "7e27d342d030d050bbb3c256eadf774ae828ec9f228f222432bf5b77e98c4183",
+    "sha512": "e457d19be68fdbc5ccdf2d693a078dee7cbee1690ddcee54c6522049298a5856d181e6306e939eb1c14f87d0cf3eb9464dcd0a5b43bc31e21799d6a7b78802ca"
+  },
+  "identity": {
+    "public_key": "2a47fd7aca22d338b671ca18485b47d5fb51a6461426fdcad9b850b1c49195ae",
+    "signature": "2c497ac2f099b9a482d3c437f08655b82a45436025e9d9e5e61f0742bc769bb9a7a6a137fec776eeafb76ef946c3f3f40e5d205f38748a9f72ac60559623ed00",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "FurryOS_Bitcoin_Provenance_Bundle.zip.ots",
+    "json_file": "FurryOS_Bitcoin_Provenance_Bundle.zip.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "Gold Master 1/23/2026 [Anthro Entertainment LLC]"
+}
