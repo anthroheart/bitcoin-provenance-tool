@@ -1,5 +1,14 @@
 # Bitcoin Provenance Tool 🛡️
 
+## The Bitcoin Anchoring and Bitcoin Verifier files are:
+
+1. Bitcoin_Anchor.py
+
+2. Bitcoin_Verifier.py
+
+3. Those two work with .ots and .json files
+   
+
 A simple, stateful Python tool that anchors files to the Bitcoin Blockchain.
 
 ## Bitcoin Anchoring
