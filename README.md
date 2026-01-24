@@ -2,7 +2,13 @@
 
 A simple, stateful Python tool that anchors files to the Bitcoin Blockchain.
 
-<img width="1920" height="1080" alt="screenshot" src="https://github.com/user-attachments/assets/e2350321-30ae-4730-a8ce-e0c61d877cd4" />
+## Bitcoin Anchoring
+<img width="1920" height="1080" alt="Bitcoin_Anchor_Screenshot" src="https://github.com/user-attachments/assets/0f6a2f3d-cf56-4ef5-9c0d-27e0dc865566" />
+
+## Bitcoin Verifying
+<img width="1920" height="1080" alt="Bitcoin_Verifier_Screenshot" src="https://github.com/user-attachments/assets/9b7130eb-8920-4d6a-a96c-8737198c4990" />
+
+## The Python Scripts Anchor and Verify: Bitcoin_Anchor.py and Bitcoin_Verifier.py
 
 ### Official Release FurryOS Gen2.1_v2 is anchored in Bitcoin Block 932396 (January 10, 2026).
 
