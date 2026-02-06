@@ -103,6 +103,14 @@
       "timestamp": "2026-01-23T12:35:44.289324+00:00",
       "proof_file": "FurryOS_WAV_Masters.7z.ots",
       "bitcoin_block": "933525"
+    },
+    {
+      "filename": "AnthroHeart_Google_Gemini_Chatlogs.zip",
+      "sha256": "1575d9d46edb04dd5279ded00d7ac5989f7d67d6983cdcb6a5c612f6d534dfcb",
+      "note": "Gold Master Feb. 3, 2026 [Anthro Entertainment LLC]",
+      "timestamp": "2026-02-03T15:23:31.827424+00:00",
+      "proof_file": "AnthroHeart_Google_Gemini_Chatlogs.zip.ots",
+      "bitcoin_block": "934864"
     }
   ]
 }

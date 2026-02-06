@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-02-03T15:23:26.707843+00:00",
+  "target_file": {
+    "filename": "AnthroHeart_Google_Gemini_Chatlogs.zip",
+    "size_bytes": 1375144813,
+    "sha256": "1575d9d46edb04dd5279ded00d7ac5989f7d67d6983cdcb6a5c612f6d534dfcb",
+    "sha512": "827527a83f148e9bd5844f1467f7f53a6c8d260eb08baa26276a0e60fcc80c85f464d7758446bacaf34f8a3c1a3c9814d19e48ed381176b651305a3ad221499a"
+  },
+  "identity": {
+    "public_key": "731ad17202a38abf42fe19818131a3fbf70556ccb2ccb6aac55b5fa8e3520bb6",
+    "signature": "8d97e8d96ea15500b5193551e00f4122b5e84a9001e7e5b28a84fcf9799e3cff97eb0d474dbd1cc4b09e1016f5b207ff89c8a681a183eb8a69f8b2b50b8b8c07",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "AnthroHeart_Google_Gemini_Chatlogs.zip.ots",
+    "json_file": "AnthroHeart_Google_Gemini_Chatlogs.zip.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "Gold Master Feb. 3, 2026 [Anthro Entertainment LLC]"
+}
