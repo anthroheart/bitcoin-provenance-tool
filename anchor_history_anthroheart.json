@@ -1,0 +1,100 @@
+{
+  "records": [
+    {
+      "filename": "anthroheart_collage.png",
+      "sha256": "03239948bec935275bdf889462a6532c1c9317e7d6bc929217f6a0677e513e31",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:35:22.869382+00:00",
+      "proof_file": "anthroheart_collage.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "anthroheart_collage_gender_flipped.png",
+      "sha256": "a37910145dbea1f95305ab8636240b75eb885d179f14daf8a213f49283cb62e8",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:35:39.288715+00:00",
+      "proof_file": "anthroheart_collage_gender_flipped.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "anthroheart_collage_gender_species_flipped.png",
+      "sha256": "b66fb62439dd8b32e02e5562ade3005cef79d166187f33291f32a4c65f2fc89b",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:36:00.332879+00:00",
+      "proof_file": "anthroheart_collage_gender_species_flipped.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "anthroheart_collage_species_flip.png",
+      "sha256": "54ea7968b3e4af475389a54fe99c4df814a868565cc5a13f277e9dba349fee04",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:36:17.468742+00:00",
+      "proof_file": "anthroheart_collage_species_flip.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "warlock_collage.png",
+      "sha256": "7ee62673a3ed9dd8662af963700c1327fe554a5e9b4a6de37189a4344bc40337",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:36:28.555874+00:00",
+      "proof_file": "warlock_collage.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "warlock_collage_gender_flipped.png",
+      "sha256": "dc032a0abb48b38f17ba7999aeab2f7a399c989c4e11022571d405b90f7d40a5",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:36:47.331803+00:00",
+      "proof_file": "warlock_collage_gender_flipped.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "warlock_collage_gender_species_flipped.png",
+      "sha256": "6a8547d78e23dbd17732feb44aecad42bd2711c60965555bf05e8586bebd031b",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:37:04.533030+00:00",
+      "proof_file": "warlock_collage_gender_species_flipped.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "warlock_collage_species_flipped.png",
+      "sha256": "0709534c803d80391cbdc25acacea9bb45d917986469d0ca8b732be2a652f1e2",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:37:20.812638+00:00",
+      "proof_file": "warlock_collage_species_flipped.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "XSO_Good.jpg",
+      "sha256": "6d7646ab16b9a4bbda7ff352882b29c2195ac5d6376f8bf03d9f8a1c4bf67414",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:37:32.778728+00:00",
+      "proof_file": "XSO_Good.jpg.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "XSO_Good_gender_flipped.png",
+      "sha256": "8d33320d241a6873dd4a9765595f72b9bb9f38e15dfc2aca7f33c78b91325648",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:37:46.628984+00:00",
+      "proof_file": "XSO_Good_gender_flipped.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "XSO_Good_gender_flipped_human.png",
+      "sha256": "ec433073665e20ecac971b2772e2f95ca6e49f9c2483c80bb38150374f81ac88",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:38:04.153815+00:00",
+      "proof_file": "XSO_Good_gender_flipped_human.png.ots",
+      "bitcoin_block": "936282"
+    },
+    {
+      "filename": "XSO_Good_human.png",
+      "sha256": "8eb6780811a23050f59602b9c102f34d26a0b380c7d394488e128ff08319d3b3",
+      "note": "FurryOS Asset Anchor",
+      "timestamp": "2026-02-12T21:38:17.958447+00:00",
+      "proof_file": "XSO_Good_human.png.ots",
+      "bitcoin_block": "936282"
+    }
+  ]
+}

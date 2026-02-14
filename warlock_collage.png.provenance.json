@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-02-12T21:36:26.807842+00:00",
+  "target_file": {
+    "filename": "warlock_collage.png",
+    "size_bytes": 938446,
+    "sha256": "7ee62673a3ed9dd8662af963700c1327fe554a5e9b4a6de37189a4344bc40337",
+    "sha512": "1b48b66d25da5e35136a162bf5223800fefacf09ccd5484e4bc16566959b0727c8eaf5b1232e89571dfa92383819bb42ec362465cff04a40553c294e3758786d"
+  },
+  "identity": {
+    "public_key": "341ca22c3b98ea70f0e091e1747315d000aaf4cc91d47bb7f8c6e0aaf033d5a9",
+    "signature": "f94b7a15b470af59ee1ac8c511b56f63700f050c3879ca141d0b72f3b4f7be0cb1814e6e89e5581eb9fcd11484a5ce1a536c856ee7ff4f8168b4a2a3e1670702",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "warlock_collage.png.ots",
+    "json_file": "warlock_collage.png.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "FurryOS Asset Anchor"
+}

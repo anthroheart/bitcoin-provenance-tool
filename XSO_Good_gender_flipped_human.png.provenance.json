@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-02-12T21:38:02.736671+00:00",
+  "target_file": {
+    "filename": "XSO_Good_gender_flipped_human.png",
+    "size_bytes": 1647378,
+    "sha256": "ec433073665e20ecac971b2772e2f95ca6e49f9c2483c80bb38150374f81ac88",
+    "sha512": "272b9fa76cd9cc4de4187039d05117b3ba45eca454da7d966d0c2e0fea32fcfd6724651f96441ed8a2f33dad89b310afbfa0abf40eb02743f00aea17db64a878"
+  },
+  "identity": {
+    "public_key": "341ca22c3b98ea70f0e091e1747315d000aaf4cc91d47bb7f8c6e0aaf033d5a9",
+    "signature": "81a8043bfd0dcc8a03ed8b312cd1512875b61adf9e899fba05e8cd125c7729272fbe1537cb6ad570117c50b65d33637a50848b937a708a470f9176ee97dd350d",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "XSO_Good_gender_flipped_human.png.ots",
+    "json_file": "XSO_Good_gender_flipped_human.png.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "FurryOS Asset Anchor"
+}

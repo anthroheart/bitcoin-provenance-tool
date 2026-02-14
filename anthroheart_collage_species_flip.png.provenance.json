@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-02-12T21:36:15.943654+00:00",
+  "target_file": {
+    "filename": "anthroheart_collage_species_flip.png",
+    "size_bytes": 2330834,
+    "sha256": "54ea7968b3e4af475389a54fe99c4df814a868565cc5a13f277e9dba349fee04",
+    "sha512": "170af26c83b50c738d301a44e298e9e6256b07264c0f7afcea1ac388b280563d45978d434543d00fb44c3b0634b7c3ca99c37d661bb76bbc711767a35af83e09"
+  },
+  "identity": {
+    "public_key": "341ca22c3b98ea70f0e091e1747315d000aaf4cc91d47bb7f8c6e0aaf033d5a9",
+    "signature": "55cbfe206bb9f5918bd5510f8814637d71955f4bb6f869510298e7133925af6925d9cebfe574cb6dbe3a9c6b0e135b162668ba7402e13be71a08b8e09d0ba70f",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "anthroheart_collage_species_flip.png.ots",
+    "json_file": "anthroheart_collage_species_flip.png.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "FurryOS Asset Anchor"
+}

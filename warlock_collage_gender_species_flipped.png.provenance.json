@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-02-12T21:37:02.616294+00:00",
+  "target_file": {
+    "filename": "warlock_collage_gender_species_flipped.png",
+    "size_bytes": 890960,
+    "sha256": "6a8547d78e23dbd17732feb44aecad42bd2711c60965555bf05e8586bebd031b",
+    "sha512": "3017bc8f61f8f7f67c4625e92e24a1e7fb94f897d1f49acb4b15ab494fd85c5cbb8e8289560c396e0c2041d4b97d2c4910f7b9b6d3e86e4f4eab31663958baba"
+  },
+  "identity": {
+    "public_key": "341ca22c3b98ea70f0e091e1747315d000aaf4cc91d47bb7f8c6e0aaf033d5a9",
+    "signature": "41bf24f52005711e0c9f4e76e427825402d1a76d5513105d997e457b731bbe89a7659b890bbf3981cf9086c2340dd34294b4639249f1ff71a491e6f3c6628105",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "warlock_collage_gender_species_flipped.png.ots",
+    "json_file": "warlock_collage_gender_species_flipped.png.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "FurryOS Asset Anchor"
+}

@@ -1,0 +1,25 @@
+{
+  "version": "1.3",
+  "provenance_status": "pending",
+  "last_updated": "2026-02-12T21:35:37.814695+00:00",
+  "target_file": {
+    "filename": "anthroheart_collage_gender_flipped.png",
+    "size_bytes": 2438750,
+    "sha256": "a37910145dbea1f95305ab8636240b75eb885d179f14daf8a213f49283cb62e8",
+    "sha512": "2f5d5ccac5d8333972df2aa9bc3d4f09d66ffc352a6f9cfe7feca211bc10f691ba2e17993054b0984e9464dd3744e156e08bc6cb2b800f35b8c8435770e8e7b9"
+  },
+  "identity": {
+    "public_key": "341ca22c3b98ea70f0e091e1747315d000aaf4cc91d47bb7f8c6e0aaf033d5a9",
+    "signature": "7b28325b41ccb78300c52d89578c548e8e609a2decd99d1fef5d13d020fae13ce9fd040a159b326e98e74018e4e0a0e45b6af54e7be8065b564ee2c644b18d07",
+    "signed_payload": "sha512|note"
+  },
+  "artifacts": {
+    "proof_file": "anthroheart_collage_gender_flipped.png.ots",
+    "json_file": "anthroheart_collage_gender_flipped.png.provenance.json"
+  },
+  "blockchain_data": {
+    "block_height": null,
+    "confirmed_at": null
+  },
+  "user_note": "FurryOS Asset Anchor"
+}
